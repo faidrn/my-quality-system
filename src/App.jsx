@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Sidebar from './components/layout/Sidebar'
-import { Toaster } from '../src/components/ui/sonner'
+import { Toaster } from './components/ui/sonner'
+import Header from './components/layout/Header'
 import './App.css'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         className='lg:pl-64'
       >
         {/* Header */}
+        <Header onMobileMenuToggle={toggleMobileMenu} />
 
         {/* Page Content */}
         <main>
