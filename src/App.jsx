@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Sidebar from './components/layout/Sidebar'
 import { Toaster } from './components/ui/sonner'
 import Header from './components/layout/Header'
+import DashboardHome from './components/dashboard/DashboardHome'
 import './App.css'
 
 function App() {
@@ -10,6 +11,25 @@ function App() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'dashboard':
+        return <DashboardHome onNavigate={setCurrentPage} />;
+      case 'documents':
+        return <DocumentsPage />;
+      case 'non-conformities':
+        return <NonConformitiesPage />;
+      case 'users':
+        return <UserManagementPage />;
+      case 'audit-logs':
+        return <AuditLogsPage />;
+      case 'settings':
+        return <SettingsPage />;
+      default:
+        return <DashboardHome onNavigate={setCurrentPage} />;
+    }
   };
 
   return (
@@ -30,7 +50,8 @@ function App() {
         <Header onMobileMenuToggle={toggleMobileMenu} />
 
         {/* Page Content */}
-        <main>
+        <main className='p-4 lg:p-6'>
+          {renderPage()}
         </main>
 
         {/* Toast Notifications */}
