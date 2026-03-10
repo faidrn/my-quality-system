@@ -10,6 +10,7 @@ export function RecentNonConformities({ onViewAll }) {
   const recentNCs = mockNonConformities.slice(0, 5);
 
   const getSeverityColor = (severity) => {
+    console.log(severity);
     switch (severity) {
       case 'critical': return 'destructive';
       case 'high':     return 'default';
@@ -30,7 +31,7 @@ export function RecentNonConformities({ onViewAll }) {
   };
 
   return (
-    <Card>
+    <Card className="bg-white border-gray-300">
       <CardHeader className="flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-lg font-semibold">Recent Non-Conformities</CardTitle>
         <Button variant="ghost" size="sm" onClick={onViewAll}>

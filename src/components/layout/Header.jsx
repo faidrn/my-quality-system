@@ -85,7 +85,7 @@ const Header = ({ onMobileMenuToggle }) => {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent 
                             align="end" 
-                            className="w-56"
+                            className="w-56 bg-white border border-gray-200"
                         >
                             <DropdownMenuLabel>
                                 <div className="flex flex-col">

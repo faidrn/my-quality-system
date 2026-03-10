@@ -8,7 +8,7 @@ export function RecentActivity() {
   const recentLogs = mockAuditLogs.slice(0, 6);
 
   return (
-    <Card>
+    <Card className="bg-white border-gray-300">
       <CardHeader>
         <CardTitle className="text-lg font-semibold">Recent Activity</CardTitle>
       </CardHeader>

@@ -44,7 +44,7 @@ const DashboardHome = ({ onNavigate }) => {
             {/* Charts Row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Monthly Trends */}
-                <Card>
+                <Card className="bg-white border-gray-300">
                     <CardHeader>
                         <CardTitle>Monthly Trends</CardTitle>
                     </CardHeader>
@@ -76,7 +76,7 @@ const DashboardHome = ({ onNavigate }) => {
                 </Card>
 
                 {/* Non-Conformities by Severity */}
-                <Card>
+                <Card className="bg-white border-gray-300">
                     <CardHeader>
                         <CardTitle>Non-Conformities by Severity</CardTitle>
                     </CardHeader>
@@ -106,7 +106,9 @@ const DashboardHome = ({ onNavigate }) => {
 
             {/* Recent Non-Conformities and Activity */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <RecentNonConformities onViewAll={() => onNavigate('non-conformities')} />
+                <RecentNonConformities 
+                    onViewAll={() => onNavigate('non-conformities')} 
+                />
                 <RecentActivity />
             </div>
         </div>

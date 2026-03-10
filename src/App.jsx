@@ -3,6 +3,7 @@ import Sidebar from './components/layout/Sidebar'
 import { Toaster } from './components/ui/sonner'
 import Header from './components/layout/Header'
 import DashboardHome from './components/dashboard/DashboardHome'
+import DocumentsPage from './components/documents/DocumentsPage'
 import './App.css'
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 lg:w-screen">
       {/* Sidebar */}
       <Sidebar 
         currentPage={currentPage}
