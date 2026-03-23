@@ -10,7 +10,6 @@ export function RecentNonConformities({ onViewAll }) {
   const recentNCs = mockNonConformities.slice(0, 5);
 
   const getSeverityColor = (severity) => {
-    console.log(severity);
     switch (severity) {
       case 'critical': return 'destructive';
       case 'high':     return 'default';

@@ -52,55 +52,60 @@ const DocumentsPage = () => {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-            <h1 className="text-2xl font-bold text-gray-900">Document Management</h1>
-            <p className="text-gray-500 mt-1">
-                Manage quality documents, procedures, and manuals
-            </p>
+                <h1 className="text-2xl font-bold text-gray-900">Document Management</h1>
+                <p className="text-gray-500 mt-1">
+                    Manage quality documents, procedures, and manuals
+                </p>
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700">
-            <Plus className="w-4 h-4 mr-2" />
-            Upload Document
+            <Button className="bg-blue-600 hover:bg-blue-700 md:bg-blue-600">
+                <Plus className="w-4 h-4 mr-2" />
+                Upload Document
             </Button>
         </div>
 
         {/* Filters */}
-        <Card>
+        <Card className="bg-white border-gray-300">
             <CardContent className="pt-6">
-            <div className="flex flex-col md:flex-row gap-4">
-                <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <Input
-                    placeholder="Search documents..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
-                />
+                <div className="flex flex-col md:flex-row gap-4">
+                    <div className="relative flex-1">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                        <Input
+                            placeholder="Search documents..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="pl-10 bg-gray-100 border-0"
+                        />
+                    </div>
+                    <Select 
+                        value={categoryFilter} 
+                        onValueChange={setCategoryFilter}
+                    >
+                        <SelectTrigger className="w-full md:w-48">
+                            <SelectValue placeholder="Category" />
+                        </SelectTrigger>
+                        <SelectContent
+                            className="bg-white border-gray-100"
+                        >
+                            <SelectItem value="all">All Categories</SelectItem>
+                            <SelectItem value="process">Process</SelectItem>
+                            <SelectItem value="procedure">Procedure</SelectItem>
+                            <SelectItem value="manual">Manual</SelectItem>
+                            <SelectItem value="format">Format</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                    </Select>
+                    <Select value={statusFilter} onValueChange={setStatusFilter}>
+                        <SelectTrigger className="w-full md:w-48">
+                            <SelectValue placeholder="Status" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">All Status</SelectItem>
+                            <SelectItem value="approved">Approved</SelectItem>
+                            <SelectItem value="draft">Draft</SelectItem>
+                            <SelectItem value="archived">Archived</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
-                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="w-full md:w-48">
-                    <SelectValue placeholder="Category" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectItem value="all">All Categories</SelectItem>
-                    <SelectItem value="process">Process</SelectItem>
-                    <SelectItem value="procedure">Procedure</SelectItem>
-                    <SelectItem value="manual">Manual</SelectItem>
-                    <SelectItem value="format">Format</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-                </Select>
-                <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full md:w-48">
-                    <SelectValue placeholder="Status" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
-                    <SelectItem value="approved">Approved</SelectItem>
-                    <SelectItem value="draft">Draft</SelectItem>
-                    <SelectItem value="archived">Archived</SelectItem>
-                </SelectContent>
-                </Select>
-            </div>
             </CardContent>
         </Card>
 
