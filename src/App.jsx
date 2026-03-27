@@ -5,6 +5,7 @@ import Header from './components/layout/Header'
 import DashboardHome from './components/dashboard/DashboardHome'
 import DocumentsPage from './components/documents/DocumentsPage'
 import { NonConformitiesPage } from './components/non-conformities/NonConformitiesPage'
+import UserManagementPage from './components/admin/UserManagementPage'
 import './App.css'
 
 function App() {
