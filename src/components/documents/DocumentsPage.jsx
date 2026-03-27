@@ -98,7 +98,9 @@ const DocumentsPage = () => {
                         <SelectTrigger className="w-full md:w-48">
                             <SelectValue placeholder="Status" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent
+                            className="bg-white border-gray-100"
+                        >
                             <SelectItem value="all">All Status</SelectItem>
                             <SelectItem value="approved">Approved</SelectItem>
                             <SelectItem value="draft">Draft</SelectItem>
@@ -110,70 +112,85 @@ const DocumentsPage = () => {
         </Card>
 
         {/* Documents Table */}
-        <Card>
+        <Card
+            className="bg-white border-gray-300"
+        >
             <CardHeader>
-            <CardTitle>Documents ({filteredDocuments.length})</CardTitle>
+                <CardTitle
+                    className="text-lg font-semibold text-gray-900"
+                >
+                    Documents ({filteredDocuments.length})
+                </CardTitle>
             </CardHeader>
             <CardContent>
-            <div className="overflow-x-auto">
-                <Table>
-                <TableHeader>
-                    <TableRow>
-                    <TableHead>Document</TableHead>
-                    <TableHead>Category</TableHead>
-                    <TableHead>Version</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Uploaded By</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Size</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {filteredDocuments.map((doc) => (
-                    <TableRow key={doc.id}>
-                        <TableCell>
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center shrink-0">
-                            <FileText className="w-5 h-5 text-blue-600" />
-                            </div>
-                            <div>
-                            <p className="font-medium text-gray-900">{doc.name}</p>
-                            <p className="text-sm text-gray-500">{doc.id}</p>
-                            </div>
-                        </div>
-                        </TableCell>
-                        <TableCell>
-                        <Badge className={getCategoryColor(doc.category)}>
-                            {doc.category}
-                        </Badge>
-                        </TableCell>
-                        <TableCell className="font-mono text-sm">v{doc.version}</TableCell>
-                        <TableCell>
-                        <Badge className={getStatusColor(doc.status)}>
-                            {doc.status}
-                        </Badge>
-                        </TableCell>
-                        <TableCell className="text-sm">{doc.uploadedBy}</TableCell>
-                        <TableCell className="text-sm">
-                        {format(doc.updatedAt, 'MMM dd, yyyy')}
-                        </TableCell>
-                        <TableCell className="text-sm">{doc.size}</TableCell>
-                        <TableCell className="text-right">
-                        <div className="flex items-center justify-end gap-2">
-                            <Button variant="ghost" size="sm">
-                            <Eye className="w-4 h-4" />
-                            </Button>
-                            <Button variant="ghost" size="sm">
-                            <Download className="w-4 h-4" />
-                            </Button>
-                        </div>
-                        </TableCell>
-                    </TableRow>
-                    ))}
-                </TableBody>
-                </Table>
-            </div>
+                <div className="overflow-x-auto">
+                    <Table>
+                        <TableHeader>
+                            <TableRow
+                                className="border-b border-gray-300"
+                            >
+                                <TableHead>Document</TableHead>
+                                <TableHead>Category</TableHead>
+                                <TableHead>Version</TableHead>
+                                <TableHead>Status</TableHead>
+                                <TableHead>Uploaded By</TableHead>
+                                <TableHead>Date</TableHead>
+                                <TableHead>Size</TableHead>
+                                <TableHead className="text-right">Actions</TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody
+                            className="border-gray-300"
+                        >
+                            {filteredDocuments.map((doc) => (
+                            <TableRow 
+                                key={doc.id}
+                                className="border-b border-gray-300"
+                            >
+                                <TableCell>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center shrink-0">
+                                            <FileText className="w-5 h-5 text-blue-600" />
+                                        </div>
+                                        <div>
+                                            <p className="font-medium text-gray-900">{doc.name}</p>
+                                            <p className="text-sm text-gray-500">{doc.id}</p>
+                                        </div>
+                                    </div>
+                                </TableCell>
+                                <TableCell>
+                                    <Badge className={getCategoryColor(doc.category)}>
+                                        {doc.category}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell className="font-mono text-sm">
+                                    v{doc.version}
+                                </TableCell>
+                                <TableCell>
+                                    <Badge className={getStatusColor(doc.status)}>
+                                        {doc.status}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell className="text-sm">{doc.uploadedBy}</TableCell>
+                                <TableCell className="text-sm">
+                                    {format(doc.updatedAt, 'MMM dd, yyyy')}
+                                </TableCell>
+                                <TableCell className="text-sm">{doc.size}</TableCell>
+                                <TableCell className="text-right">
+                                    <div className="flex items-center justify-end gap-2">
+                                        <Button variant="ghost" size="sm">
+                                            <Eye className="w-4 h-4" />
+                                        </Button>
+                                        <Button variant="ghost" size="sm">
+                                            <Download className="w-4 h-4" />
+                                        </Button>
+                                    </div>
+                                </TableCell>
+                            </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </CardContent>
         </Card>
         </div>
