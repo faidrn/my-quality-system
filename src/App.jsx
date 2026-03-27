@@ -4,6 +4,7 @@ import { Toaster } from './components/ui/sonner'
 import Header from './components/layout/Header'
 import DashboardHome from './components/dashboard/DashboardHome'
 import DocumentsPage from './components/documents/DocumentsPage'
+import { NonConformitiesPage } from './components/non-conformities/NonConformitiesPage'
 import './App.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   };
 
   const renderPage = () => {
+    console.log('Rendering page:', currentPage);
     switch (currentPage) {
       case 'dashboard':
         return <DashboardHome onNavigate={setCurrentPage} />;
