@@ -77,7 +77,9 @@ export function NonConformitiesPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card>
+        <Card 
+            className="bg-white border-gray-300"
+        >
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
@@ -92,7 +94,9 @@ export function NonConformitiesPage() {
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card
+            className="bg-white border-gray-300"
+        >
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
@@ -107,7 +111,9 @@ export function NonConformitiesPage() {
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card
+            className="bg-white border-gray-300"
+        >
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
@@ -122,7 +128,9 @@ export function NonConformitiesPage() {
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card
+            className="bg-white border-gray-300"
+        >
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
@@ -140,7 +148,9 @@ export function NonConformitiesPage() {
       </div>
 
       {/* Filters */}
-      <Card>
+      <Card
+        className="bg-white border-gray-300"
+      >
         <CardContent className="pt-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
@@ -149,14 +159,20 @@ export function NonConformitiesPage() {
                 placeholder="Search non-conformities..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                className="pl-10 border-gray-100 bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-300"
               />
             </div>
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <Select 
+                value={statusFilter} 
+                onValueChange={setStatusFilter}
+                className="border-gray-100 bg-gray-100"
+            >
               <SelectTrigger className="w-full md:w-48">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent
+                className="bg-white"
+              >
                 <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="open">Open</SelectItem>
                 <SelectItem value="in-progress">In Progress</SelectItem>
@@ -164,11 +180,17 @@ export function NonConformitiesPage() {
                 <SelectItem value="closed">Closed</SelectItem>
               </SelectContent>
             </Select>
-            <Select value={severityFilter} onValueChange={setSeverityFilter}>
+            <Select 
+                value={severityFilter} 
+                onValueChange={setSeverityFilter}
+                className="border-gray-100 bg-gray-100"
+            >
               <SelectTrigger className="w-full md:w-48">
                 <SelectValue placeholder="Severity" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent
+                className="bg-white"
+              >
                 <SelectItem value="all">All Severity</SelectItem>
                 <SelectItem value="critical">Critical</SelectItem>
                 <SelectItem value="high">High</SelectItem>
@@ -181,15 +203,21 @@ export function NonConformitiesPage() {
       </Card>
 
       {/* Non-Conformities Table */}
-      <Card>
+      <Card
+        className="bg-white border-gray-300">
         <CardHeader>
-          <CardTitle>Non-Conformities ({filteredNCs.length})</CardTitle>
+          <CardTitle
+            className="text-lg font-semibold text-gray-900">
+            Non-Conformities ({filteredNCs.length})
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow>
+                <TableRow
+                  className="border-b-gray-300 hover:bg-gray-50"
+                >
                   <TableHead>ID / Title</TableHead>
                   <TableHead>Category</TableHead>
                   <TableHead>Severity</TableHead>
@@ -202,7 +230,9 @@ export function NonConformitiesPage() {
               </TableHeader>
               <TableBody>
                 {filteredNCs.map((nc) => (
-                  <TableRow key={nc.id}>
+                  <TableRow key={nc.id}
+                    className="border-b-gray-200 hover:bg-gray-50"
+                >
                     <TableCell>
                       <div>
                         <p className="font-medium text-gray-900">{nc.title}</p>
