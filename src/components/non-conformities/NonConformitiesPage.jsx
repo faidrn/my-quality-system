@@ -207,7 +207,8 @@ export function NonConformitiesPage() {
         className="bg-white border-gray-300">
         <CardHeader>
           <CardTitle
-            className="text-lg font-semibold text-gray-900">
+            className="text-lg font-semibold text-gray-900"
+        >
             Non-Conformities ({filteredNCs.length})
           </CardTitle>
         </CardHeader>

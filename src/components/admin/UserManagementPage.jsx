@@ -44,7 +44,9 @@ const UserManagementPage = () => {
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card>
+        <Card
+            className="bg-white border-gray-300"
+        >
           <CardContent className="pt-6">
             <div className="text-center">
               <p className="text-2xl font-bold text-gray-900">
@@ -54,7 +56,9 @@ const UserManagementPage = () => {
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card
+            className="bg-white border-gray-300"
+        >
           <CardContent className="pt-6">
             <div className="text-center">
               <p className="text-2xl font-bold text-gray-900">
@@ -64,7 +68,9 @@ const UserManagementPage = () => {
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card
+            className="bg-white border-gray-300"
+        >
           <CardContent className="pt-6">
             <div className="text-center">
               <p className="text-2xl font-bold text-gray-900">
@@ -77,7 +83,9 @@ const UserManagementPage = () => {
       </div>
 
       {/* Search */}
-      <Card>
+      <Card
+        className="bg-white border-gray-300"
+      >
         <CardContent className="pt-6">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -85,22 +93,30 @@ const UserManagementPage = () => {
               placeholder="Search users..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
+              className="pl-10 border-gray-100 bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-300"
             />
           </div>
         </CardContent>
       </Card>
 
       {/* Users Table */}
-      <Card>
+      <Card
+        className="bg-white border-gray-300"
+      >
         <CardHeader>
-          <CardTitle>Users ({filteredUsers.length})</CardTitle>
+          <CardTitle
+            className="text-lg font-semibold text-gray-900"
+          >
+            Users ({filteredUsers.length})
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow>
+                <TableRow
+                    className="border-b-gray-300 hover:bg-gray-50"
+                >
                   <TableHead>User</TableHead>
                   <TableHead>Email</TableHead>
                   <TableHead>Role</TableHead>
@@ -111,7 +127,10 @@ const UserManagementPage = () => {
               </TableHeader>
               <TableBody>
                 {filteredUsers.map((user) => (
-                  <TableRow key={user.id}>
+                  <TableRow 
+                    key={user.id}
+                    className="border-b-gray-300 hover:bg-gray-50"
+                  >
                     <TableCell>
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
