@@ -7,6 +7,7 @@ import DocumentsPage from './components/documents/DocumentsPage'
 import { NonConformitiesPage } from './components/non-conformities/NonConformitiesPage'
 import UserManagementPage from './components/admin/UserManagementPage'
 import AuditLogsPage from './components/admin/AuditLogsPage'
+import SettingsPage from './components/admin/SettingsPage'
 import './App.css'
 
 function App() {

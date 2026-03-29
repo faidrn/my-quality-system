@@ -53,35 +53,35 @@ const AuditLogsPage = () => {
                 className="bg-white border-gray-300"
             >
                 <CardContent className="pt-6">
-                <div className="flex flex-col md:flex-row gap-4">
-                    <div className="relative flex-1">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                    <Input
-                        placeholder="Search audit logs..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-10 border-gray-100 bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-300"
-                    />
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <div className="relative flex-1">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                            <Input
+                                placeholder="Search audit logs..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="pl-10 border-gray-100 bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-300"
+                            />
+                        </div>
+                        <Select 
+                            value={moduleFilter} 
+                            onValueChange={setModuleFilter}
+                            className="border-gray-100 bg-gray-100"
+                        >
+                        <SelectTrigger className="w-full md:w-48">
+                            <SelectValue placeholder="Module" />
+                        </SelectTrigger>
+                        <SelectContent
+                            className="bg-white"
+                        >
+                            <SelectItem value="all">All Modules</SelectItem>
+                            <SelectItem value="documents">Documents</SelectItem>
+                            <SelectItem value="non-conformities">Non-Conformities</SelectItem>
+                            <SelectItem value="users">Users</SelectItem>
+                            <SelectItem value="system">System</SelectItem>
+                        </SelectContent>
+                        </Select>
                     </div>
-                    <Select 
-                        value={moduleFilter} 
-                        onValueChange={setModuleFilter}
-                        className="border-gray-100 bg-gray-100"
-                    >
-                    <SelectTrigger className="w-full md:w-48">
-                        <SelectValue placeholder="Module" />
-                    </SelectTrigger>
-                    <SelectContent
-                        className="bg-white"
-                    >
-                        <SelectItem value="all">All Modules</SelectItem>
-                        <SelectItem value="documents">Documents</SelectItem>
-                        <SelectItem value="non-conformities">Non-Conformities</SelectItem>
-                        <SelectItem value="users">Users</SelectItem>
-                        <SelectItem value="system">System</SelectItem>
-                    </SelectContent>
-                    </Select>
-                </div>
                 </CardContent>
             </Card>
 
