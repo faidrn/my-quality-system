@@ -5,7 +5,9 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Switch } from '../ui/switch';
 import { Separator } from '../ui/separator';
-import { Save } from 'lucide-react';
+import { Save, Globe } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { toast } from 'sonner';
 
 
 const SettingsPage = () => {

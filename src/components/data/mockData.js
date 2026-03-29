@@ -265,28 +265,48 @@ export const mockAuditLogs = [
 
 export const mockKPIs = [
   {
-    title: 'Open Non-Conformities',
+    en: {
+      title: 'Open Non-Conformities',
+    }, 
+    es: {
+      title: 'No Conformidades Abiertas',
+    },
     value: 2,
     change: -15,
     trend: 'down',
     icon: 'AlertCircle',
   },
   {
-    title: 'Documents Uploaded',
+    en:{
+      title: 'Documents Uploaded',
+    },
+    es: {
+      title: 'Documentos Subidos',
+    },
     value: 5,
     change: 25,
     trend: 'up',
     icon: 'FileText',
   },
   {
-    title: 'Overdue Items',
+    en: {
+      title: 'Overdue Items',
+    },
+    es: {
+      title: 'Tareas vencidas',
+    },
     value: 0,
     change: -100,
     trend: 'down',
     icon: 'Clock',
   },
   {
-    title: 'Active Users',
+    en: {
+      title: 'Active Users',
+    },
+    es: {
+      title: 'Usuarios Activos',
+    },
     value: 4,
     change: 0,
     trend: 'neutral',

@@ -17,10 +17,30 @@ const monthlyData = [
 ];
 
 const severityData = [
-  { name: 'Critical', value: 1, color: '#ef4444' },
-  { name: 'High', value: 1, color: '#f97316' },
-  { name: 'Medium', value: 0, color: '#f59e0b' },
-  { name: 'Low', value: 1, color: '#3b82f6' },
+  { 
+    en: { name: 'Critical' }, 
+    es: { name: 'Crítico'},
+    value: 1, 
+    color: '#ef4444' 
+  },
+  { 
+    en: { name: 'High' }, 
+    es: { name: 'Alto' }, 
+    value: 1, 
+    color: '#f97316' 
+  },
+  { 
+    en: { name: 'Medium' }, 
+    es: { name: 'Medio' }, 
+    value: 0, 
+    color: '#f59e0b' 
+  },
+  { 
+    en: { name: 'Low' }, 
+    es: { name: 'Bajo' }, 
+    value: 1, 
+    color: '#3b82f6'
+ },
 ];
 
 const DashboardHome = ({ onNavigate }) => {
@@ -37,7 +57,7 @@ const DashboardHome = ({ onNavigate }) => {
             {/* KPI Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {mockKPIs.map((kpi, index) => (
-                <KPICard key={index} kpi={kpi} />
+                    <KPICard key={index} kpi={kpi} />
                 ))}
             </div>
 
@@ -50,27 +70,27 @@ const DashboardHome = ({ onNavigate }) => {
                     </CardHeader>
                     <CardContent>
                         <ResponsiveContainer width="100%" height={300}>
-                        <LineChart data={monthlyData}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="month" />
-                            <YAxis />
-                            <Tooltip />
-                            <Legend />
-                            <Line
-                            type="monotone"
-                            dataKey="nonConformities"
-                            stroke="#ef4444"
-                            strokeWidth={2}
-                            name="Non-Conformities"
-                            />
-                            <Line
-                            type="monotone"
-                            dataKey="documents"
-                            stroke="#3b82f6"
-                            strokeWidth={2}
-                            name="Documents"
-                            />
-                        </LineChart>
+                            <LineChart data={monthlyData}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="month" />
+                                <YAxis />
+                                <Tooltip />
+                                <Legend />
+                                <Line
+                                    type="monotone"
+                                    dataKey="nonConformities"
+                                    stroke="#ef4444"
+                                    strokeWidth={2}
+                                    name="Non-Conformities"
+                                />
+                                <Line
+                                    type="monotone"
+                                    dataKey="documents"
+                                    stroke="#3b82f6"
+                                    strokeWidth={2}
+                                    name="Documents"
+                                />
+                            </LineChart>
                         </ResponsiveContainer>
                     </CardContent>
                 </Card>
@@ -82,23 +102,23 @@ const DashboardHome = ({ onNavigate }) => {
                     </CardHeader>
                     <CardContent>
                         <ResponsiveContainer width="100%" height={300}>
-                        <PieChart>
-                            <Pie
-                            data={severityData}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            label={({ name, value }) => `${name}: ${value}`}
-                            outerRadius={100}
-                            fill="#8884d8"
-                            dataKey="value"
-                            >
-                            {severityData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.color} />
-                            ))}
-                            </Pie>
-                            <Tooltip />
-                        </PieChart>
+                            <PieChart>
+                                <Pie
+                                    data={severityData}
+                                    cx="50%"
+                                    cy="50%"
+                                    labelLine={false}
+                                    label={({ name, value }) => `${name}: ${value}`}
+                                    outerRadius={100}
+                                    fill="#8884d8"
+                                    dataKey="value"
+                                    >
+                                    {severityData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.color} />
+                                    ))}
+                                </Pie>
+                                <Tooltip />
+                            </PieChart>
                         </ResponsiveContainer>
                     </CardContent>
                 </Card>

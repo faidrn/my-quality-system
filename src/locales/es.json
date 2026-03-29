@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "title": "System Settings",
+    "subtitle": "Configure system preferences and options",
+    "readmore": "Read More",
+    "minutes": "min read",
+    "emptyMessage": "No posts available yet. Stay tuned!"
+  }, 
+  "blogPost": {
+    "backToBlog": "Back to Blog"
+  }
+}

@@ -1,0 +1,140 @@
+{
+    "sidebar": {
+        "dashboard": "Dashboard",
+        "documents": "Documents",
+        "nonConformities": "Non-Conformities",
+        "userManagement": "User Management",
+        "settings": "Settings"
+    },
+    "header": {
+        "profile": "Profile",
+        "settings": "Settings",
+        "signout": "Sign out"
+    },
+    "settings": {
+        "title": "System Settings",
+        "subtitle": "Configure system preferences and options",
+        "generalSettings": {
+            "label": "General Settings",
+            "languages": {
+                "label": "Language",
+                "options": {
+                    "english": "English",
+                    "spanish": "Spanish"
+                },
+                "description": "Select your preferred language"
+            },
+            "company": {
+                "label": "Company Name",
+                "email": "Company Email",
+                "timezone": "Timezone"
+            }
+        },
+        "nonConformitySettings": {
+            "label": "Non-Conformity Settings",
+            "autoAssign": {
+                "label": "Auto-assign non-Conformities",
+                "description": "Automatically assign based on category and department"
+            },
+            "deadlineReminders": {
+                "label": "Send deadline reminders",
+                "description": "Email reminders 3 days before deadline"
+            },
+            "evidenceForClousure": {
+                "label": "Require evidence for closure",
+                "description": "Mandate evidence upload before closing NC"
+            }
+        },
+        "documentSettings": {
+            "label": "Document Settings",
+            "versionControl": {
+                "label": "Enable version control",
+                "description": "Track document versions and changes"
+            },
+            "approvalWorkflow": {
+                "label": "Require approval workflow",
+                "description": "Documents must be approved before publication"
+            },
+            "retentionPeriod": "Document retention period (years)"
+        },
+        "notificationSettings": {
+            "label": "Notification Settings",
+            "emailNotifications": {
+                "label": "Email notifications",
+                "description": "Send email for important updates"
+            },
+            "dailyDigest": {
+                "label": "Daily digest",
+                "description": "Receive a daily summary of activities"
+            },
+            "systemAlerts": {
+                "label": "System alerts",
+                "description": "Critical system notifications"
+            }
+        },
+        "saveButton": "Save Settings"
+    }, 
+    "dashboardPanel": {
+        "title": "Quality Management Dashboard",
+        "description": "Overview of quality metrics and system activity",
+        "monthlyTrends": {
+            "label": "Monthly Trends",
+            "lineChartNonConformities": "Non-Conformities",
+            "lineChartDocuments": "Documents"
+        },
+        "nonConformitiesBySeverity": {
+            "label": "Non-Conformities by Severity",
+            "severityLevels": {
+                "minor": "Minor",
+                "major": "Major",
+                "critical": "Critical"
+            }
+        },
+        "recentNonConformities": {
+            "label": "Recent Non-Conformities",
+            "viewAll": "View All",
+            "assignedTo": "Assigned To",
+            "dueDate": "Due"
+        },
+        "recentActivity": "Recent Activity"
+    },
+    "documentsPanel": {
+        "title": "Document Management",
+        "description": "Manage quality documents, procedures, and manuals",
+        "uploadButton": "Upload Document",
+        "filters": {
+            "searchInput": "Search documents...",
+            "categories": {
+                "selectItem": [
+                    { "value": "all", "text": "All Categories" }, 
+                    { "value": "process", "text": "Process" },
+                    { "value": "procedure", "text": "Procedure" },
+                    { "value": "manual", "text": "Manual" },
+                    { "value": "format", "text": "Format" },
+                    { "value": "other", "text": "Other" }
+                ]
+            },
+            "status": {
+                "selectItem": [
+                    { "value": "all", "text": "All Status" }, 
+                    { "value": "approved", "text": "Approved" },
+                    { "value": "draft", "text": "Draft" },
+                    { "value": "archived", "text": "Archived" }
+                ]
+            }
+        },
+        "documentTable": {
+            "title": "Documents",
+            "columns": {
+                "document": "Document",
+                "category": "Category",
+                "version": "Version",
+                "status": "Status",
+                "uploadedBy": "Uploaded By",
+                "date": "Date",
+                "size": "Size",
+                "actions": "Actions"
+            }
+        }
+    }
+}
