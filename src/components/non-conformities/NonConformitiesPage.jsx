@@ -204,7 +204,8 @@ export function NonConformitiesPage() {
 
       {/* Non-Conformities Table */}
       <Card
-        className="bg-white border-gray-300">
+        className="bg-white border-gray-300"
+      >
         <CardHeader>
           <CardTitle
             className="text-lg font-semibold text-gray-900"
