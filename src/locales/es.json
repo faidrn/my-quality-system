@@ -1,12 +1,234 @@
 {
-  "settings": {
-    "title": "System Settings",
-    "subtitle": "Configure system preferences and options",
-    "readmore": "Read More",
-    "minutes": "min read",
-    "emptyMessage": "No posts available yet. Stay tuned!"
-  }, 
-  "blogPost": {
-    "backToBlog": "Back to Blog"
-  }
+    "sidebar": {
+        "dashboard": "Panel de Control",
+        "documents": "Documentos",
+        "nonConformities": "No Conformidades",
+        "userManagement": "Gestión de Usuarios",
+        "settings": "Configuración"
+    },
+    "header": {
+        "inputSearch": "Buscar documentos, no conformidades...",
+        "profile": "Perfil",
+        "settings": "Configuración",
+        "signout": "Cerrar sesión"
+    },
+    "settingsPanel": {
+        "title": "Configuración del Sistema",
+        "subtitle": "Configure las preferencias y opciones del sistema",
+        "generalSettings": {
+            "label": "Configuración General",
+            "languages": {
+                "label": "Idioma",
+                "options": {
+                    "english": "Inglés",
+                    "spanish": "Español"
+                },
+                "description": "Seleccione su idioma preferido"
+            },
+            "company": {
+                "label": "Nombre de la Empresa",
+                "email": "Correo de la Empresa",
+                "timezone": "Zona Horaria"
+            }
+        },
+        "nonConformitySettings": {
+            "label": "Configuración de No Conformidades",
+            "autoAssign": {
+                "label": "Asignación automática de No Conformidades",
+                "description": "Asignar automáticamente según categoría y departamento"
+            },
+            "deadlineReminders": {
+                "label": "Enviar recordatorios de vencimiento",
+                "description": "Recordatorios por correo 3 días antes del vencimiento"
+            },
+            "evidenceForClousure": {
+                "label": "Requerir evidencia para el cierre",
+                "description": "Exigir carga de evidencia antes de cerrar la NC"
+            }
+        },
+        "documentSettings": {
+            "label": "Configuración de Documentos",
+            "versionControl": {
+                "label": "Habilitar control de versiones",
+                "description": "Rastrear versiones y cambios de documentos"
+            },
+            "approvalWorkflow": {
+                "label": "Requerir flujo de aprobación",
+                "description": "Los documentos deben ser aprobados antes de su publicación"
+            },
+            "retentionPeriod": "Período de retención de documentos (años)"
+        },
+        "notificationSettings": {
+            "label": "Configuración de Notificaciones",
+            "emailNotifications": {
+                "label": "Notificaciones por correo",
+                "description": "Enviar correo para actualizaciones importantes"
+            },
+            "dailyDigest": {
+                "label": "Resumen diario",
+                "description": "Recibir un resumen diario de actividades"
+            },
+            "systemAlerts": {
+                "label": "Alertas del sistema",
+                "description": "Notificaciones críticas del sistema"
+            }
+        },
+        "saveButton": "Guardar Configuración"
+    },
+    "dashboardPanel": {
+        "title": "Panel de Control de Calidad",
+        "description": "Resumen de métricas de calidad y actividad del sistema",
+        "monthlyTrends": {
+            "label": "Tendencias Mensuales",
+            "lineChartNonConformities": "No Conformidades",
+            "lineChartDocuments": "Documentos"
+        },
+        "nonConformitiesBySeverity": {
+            "label": "No Conformidades por Severidad",
+            "severityLevels": {
+                "minor": "Menor",
+                "major": "Mayor",
+                "critical": "Crítica"
+            }
+        },
+        "recentNonConformities": {
+            "label": "No Conformidades Recientes",
+            "viewAll": "Ver Todas",
+            "assignedTo": "Asignado A",
+            "dueDate": "Vencimiento"
+        },
+        "recentActivity": "Actividad Reciente"
+    },
+    "documentsPanel": {
+        "title": "Gestión de Documentos",
+        "description": "Gestione documentos de calidad, procedimientos y manuales",
+        "uploadButton": "Subir Documento",
+        "filters": {
+            "searchInput": "Buscar documentos...",
+            "categories": {
+                "selectItem": [
+                    { "value": "all", "text": "Todas las Categorías" },
+                    { "value": "process", "text": "Proceso" },
+                    { "value": "procedure", "text": "Procedimiento" },
+                    { "value": "manual", "text": "Manual" },
+                    { "value": "format", "text": "Formato" },
+                    { "value": "other", "text": "Otro" }
+                ]
+            },
+            "status": {
+                "selectItem": [
+                    { "value": "all", "text": "Todos los Estados" },
+                    { "value": "approved", "text": "Aprobado" },
+                    { "value": "draft", "text": "Borrador" },
+                    { "value": "archived", "text": "Archivado" }
+                ]
+            }
+        },
+        "documentTable": {
+            "title": "Documentos",
+            "columns": {
+                "document": "Documento",
+                "category": "Categoría",
+                "version": "Versión",
+                "status": "Estado",
+                "uploadedBy": "Subido Por",
+                "date": "Fecha",
+                "size": "Tamaño",
+                "actions": "Acciones"
+            }
+        }
+    },
+    "nonConformitiesPanel": {
+        "title": "Gestión de No Conformidades",
+        "description": "Seguimiento y gestión de no conformidades de calidad",
+        "addButton": "Registrar No Conformidad",
+        "stats": {
+            "open": "Abiertas",
+            "inProgress": "En Progreso",
+            "closed": "Cerradas",
+            "critical": "Críticas"
+        },
+        "filters": {
+            "searchInput": "Buscar no conformidades...",
+            "status": {
+                "selectItem": [
+                    { "value": "all", "text": "Todos los Estados" },
+                    { "value": "open", "text": "Abierta" },
+                    { "value": "in-progress", "text": "En Progreso" },
+                    { "value": "pending-review", "text": "Pendiente de Revisión" },
+                    { "value": "closed", "text": "Cerrada" }
+                ]
+            },
+            "severity": {
+                "selectItem": [
+                    { "value": "all", "text": "Todas las Severidades" },
+                    { "value": "critical", "text": "Crítica" },
+                    { "value": "high", "text": "Alta" },
+                    { "value": "medium", "text": "Media" },
+                    { "value": "low", "text": "Baja" }
+                ]
+            }
+        },
+        "nonConformitiesTable": {
+            "title": "No Conformidades",
+            "columns": {
+                "ncId": "ID / Título",
+                "category": "Categoría",
+                "severity": "Severidad",
+                "priority": "Prioridad",
+                "status": "Estado",
+                "assignedTo": "Asignado A",
+                "deadline": "Fecha Límite",
+                "actions": "Acciones"
+            }
+        }
+    },
+    "userManagementPanel": {
+        "title": "Gestión de Usuarios",
+        "description": "Gestione cuentas de usuario, roles y permisos",
+        "addButton": "Agregar Usuario",
+        "stats": {
+            "activeUsers": "Usuarios Activos",
+            "administrators": "Administradores",
+            "managers": "Gestores"
+        },
+        "searchInput": "Buscar usuarios...",
+        "usersTable": {
+            "title": "Usuarios",
+            "columns": {
+                "user": "Usuario",
+                "email": "Correo",
+                "role": "Rol",
+                "department": "Departamento",
+                "status": "Estado",
+                "actions": "Acciones"
+            }
+        }
+    },
+    "auditLogsPanel": {
+        "title": "Registros de Auditoría",
+        "description": "Rastree actividades del sistema y acciones de usuarios",
+        "filters": {
+            "searchInput": "Buscar registros de auditoría...",
+            "type": {
+                "selectItem": [
+                    { "value": "all", "text": "Todos los Módulos" },
+                    { "value": "documents", "text": "Documentos" },
+                    { "value": "non-conformities", "text": "No Conformidades" },
+                    { "value": "users", "text": "Usuarios" },
+                    { "value": "system", "text": "Sistema" }
+                ]
+            }
+        },
+        "auditLogsTable": {
+            "title": "Registro de Actividad",
+            "columns": {
+                "user": "Usuario",
+                "action": "Acción",
+                "module": "Módulo",
+                "details": "Detalles",
+                "timestamp": "Marca de Tiempo"
+            }
+        }
+    }
 }

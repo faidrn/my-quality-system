@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { 
@@ -11,8 +11,15 @@ import {
 } from '../ui/dropdown-menu';
 import { Menu, Search, Bell, User } from 'lucide-react';
 import { Badge } from "../ui/badge";
+import useTranslations  from "../../hooks/useTranslations";
+
 
 const Header = ({ onMobileMenuToggle }) => {
+    const { t, loading } = useTranslations();
+    
+    // Previene error si el JSON aún no se ha cargado
+    if (loading) return <p>Loading...</p>;
+
     return (
         <header
             className="h-16 border-b border-gray-200 bg-white sticky top-0 z-30"
@@ -43,7 +50,7 @@ const Header = ({ onMobileMenuToggle }) => {
                                 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
                             />
                             <Input 
-                                placeholder="Search documents, non-conformities..."
+                                placeholder={t("header.inputSearch")}
                                 className="pl-10"
                             />
                         </div>

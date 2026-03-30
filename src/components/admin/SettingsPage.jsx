@@ -8,15 +8,31 @@ import { Separator } from '../ui/separator';
 import { Save, Globe } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { toast } from 'sonner';
+import useLanguage from '../../hooks/useLanguage';
+import useTranslations  from "../../hooks/useTranslations";
 
 
 const SettingsPage = () => {
+    const { language, setLanguage } = useLanguage();
+    const { t } = useTranslations();
+
+    const handleLanguageChange = (value) => {
+        setLanguage(value);
+        toast.success(
+            value === 'en'
+            ? 'Language changed to English'
+            : 'Idioma cambiado a Español'
+        );
+    };
+
     return (
         <div className="space-y-6">
             {/* Header */}
             <div>
-                <h1 className="text-2xl font-bold text-gray-900">System Settings</h1>
-                <p className="text-gray-500 mt-1">Configure system preferences and options</p>
+                <h1 className="text-2xl font-bold text-gray-900">{t('settingsPanel.title')}</h1>
+                <p className="text-gray-500 mt-1">
+                    {t('settingsPanel.subtitle')}
+                </p>
             </div>
 
             {/* General Settings */}
@@ -27,12 +43,33 @@ const SettingsPage = () => {
                     <CardTitle
                         className="text-lg font-semibold text-gray-900"
                     >
-                        General Settings
+                        {t('settingsPanel.generalSettings.label')}
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="space-y-2">
-                        <Label htmlFor="company-name">Company Name</Label>
+                        <Label htmlFor="language" className="flex items-center gap-2">
+                            <Globe className="w-4 h-4" />
+                            {t('settingsPanel.generalSettings.languages.label')}
+                        </Label>
+                        <Select value={language} onValueChange={handleLanguageChange}>
+                            <SelectTrigger id="language">
+                                <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent className="bg-white border-gray-100">
+                                <SelectItem value="en">{t('settingsPanel.generalSettings.languages.options.english')}</SelectItem>
+                                <SelectItem value="es">{t('settingsPanel.generalSettings.languages.options.spanish')}</SelectItem>
+                            </SelectContent>
+                        </Select>
+                        <p className="text-sm text-gray-500">
+                            {t('settingsPanel.generalSettings.languages.description')}
+                        </p>
+                    </div>
+                    <Separator 
+                        className="border border-gray-300"
+                    />
+                    <div className="space-y-2">
+                        <Label htmlFor="company-name">{t('settingsPanel.generalSettings.company.label')}</Label>
                         <Input 
                             id="company-name" 
                             defaultValue="Quality Management Corp." 
@@ -40,7 +77,7 @@ const SettingsPage = () => {
                         />
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="company-email">Company Email</Label>
+                        <Label htmlFor="company-email">{t('settingsPanel.generalSettings.company.email')}</Label>
                         <Input
                             id="company-email"
                             type="email"
@@ -49,7 +86,7 @@ const SettingsPage = () => {
                         />
                     </div>
                     <div className="space-y-2">
-                        <Label htmlFor="timezone">Timezone</Label>
+                        <Label htmlFor="timezone">{t('settingsPanel.generalSettings.company.timezone')}</Label>
                         <Input 
                             id="timezone" 
                             defaultValue="UTC-05:00 (Eastern Time)" 
@@ -67,15 +104,15 @@ const SettingsPage = () => {
                     <CardTitle
                         className="text-lg font-semibold text-gray-900"
                     >
-                        Non-Conformity Settings
+                        {t('settingsPanel.nonConformitySettings.label')}
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                            <Label>Auto-assign non-conformities</Label>
+                            <Label>{t('settingsPanel.nonConformitySettings.autoAssign.label')}</Label>
                             <p className="text-sm text-gray-500">
-                                Automatically assign based on category and department
+                                {t('settingsPanel.nonConformitySettings.autoAssign.description')}
                             </p>
                         </div>
                         <Switch defaultChecked />
@@ -85,9 +122,9 @@ const SettingsPage = () => {
                     />
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                            <Label>Send deadline reminders</Label>
+                            <Label>{t('settingsPanel.nonConformitySettings.deadlineReminders.label')}</Label>
                             <p className="text-sm text-gray-500">
-                                Email reminders 3 days before deadline
+                                {t('settingsPanel.nonConformitySettings.deadlineReminders.description')}
                             </p>
                         </div>
                         <Switch defaultChecked />
@@ -97,9 +134,9 @@ const SettingsPage = () => {
                     />
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                        <Label>Require evidence for closure</Label>
+                        <Label>{t('settingsPanel.nonConformitySettings.evidenceForClousure.label')}</Label>
                         <p className="text-sm text-gray-500">
-                            Mandate evidence upload before closing NC
+                            {t('settingsPanel.nonConformitySettings.evidenceForClousure.description')}
                         </p>
                         </div>
                         <Switch defaultChecked />
@@ -115,15 +152,15 @@ const SettingsPage = () => {
                     <CardTitle
                         className="text-lg font-semibold text-gray-900"
                     >
-                        Document Settings
+                        {t('settingsPanel.documentSettings.label')}
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                            <Label>Enable version control</Label>
+                            <Label>{t('settingsPanel.documentSettings.versionControl.label')}</Label>
                             <p className="text-sm text-gray-500">
-                                Track document versions and changes
+                                {t('settingsPanel.documentSettings.versionControl.description')}
                             </p>
                         </div>
                         <Switch defaultChecked />
@@ -133,9 +170,9 @@ const SettingsPage = () => {
                     />
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                            <Label>Require approval workflow</Label>
+                            <Label>{t('settingsPanel.documentSettings.approvalWorkflow.label')}</Label>
                             <p className="text-sm text-gray-500">
-                                Documents must be approved before publication
+                                {t('settingsPanel.documentSettings.approvalWorkflow.description')}
                             </p>
                         </div>
                         <Switch defaultChecked />
@@ -144,7 +181,7 @@ const SettingsPage = () => {
                         className="border border-gray-300"
                     />
                     <div className="space-y-2">
-                        <Label htmlFor="retention-period">Document Retention Period (years)</Label>
+                        <Label htmlFor="retention-period">{t('settingsPanel.documentSettings.retentionPeriod')}</Label>
                         <Input 
                             id="retention-period" 
                             type="number" 
@@ -163,15 +200,15 @@ const SettingsPage = () => {
                     <CardTitle
                         className="text-lg font-semibold text-gray-900"
                     >
-                        Notification Settings
+                        {t('settingsPanel.notificationSettings.label')}
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                            <Label>Email notifications</Label>
+                            <Label>{t('settingsPanel.notificationSettings.emailNotifications.label')}</Label>
                             <p className="text-sm text-gray-500">
-                                Send email for important updates
+                                {t('settingsPanel.notificationSettings.emailNotifications.description')}
                             </p>
                         </div>
                         <Switch defaultChecked />
@@ -181,9 +218,9 @@ const SettingsPage = () => {
                     />
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                            <Label>Daily digest</Label>
+                            <Label>{t('settingsPanel.notificationSettings.dailyDigest.label')}</Label>
                             <p className="text-sm text-gray-500">
-                                Receive daily summary of activities
+                                {t('settingsPanel.notificationSettings.dailyDigest.description')}
                             </p>
                         </div>
                         <Switch />
@@ -193,9 +230,9 @@ const SettingsPage = () => {
                     />
                     <div className="flex items-center justify-between">
                         <div className="space-y-0.5">
-                            <Label>System alerts</Label>
+                            <Label>{t('settingsPanel.notificationSettings.systemAlerts.label')}</Label>
                             <p className="text-sm text-gray-500">
-                                Critical system notifications
+                                {t('settingsPanel.notificationSettings.systemAlerts.description')}
                             </p>
                         </div>
                         <Switch defaultChecked />
@@ -209,7 +246,7 @@ const SettingsPage = () => {
                     className="bg-blue-600 hover:bg-blue-700"
                 >
                     <Save className="w-4 h-4 mr-2" />
-                    Save Settings
+                    {t('settingsPanel.saveButton')}
                 </Button>
             </div>
         </div>

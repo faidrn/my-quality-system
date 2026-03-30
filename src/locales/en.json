@@ -7,11 +7,12 @@
         "settings": "Settings"
     },
     "header": {
+        "inputSearch": "Search documents, non-conformities...",
         "profile": "Profile",
         "settings": "Settings",
         "signout": "Sign out"
     },
-    "settings": {
+    "settingsPanel": {
         "title": "System Settings",
         "subtitle": "Configure system preferences and options",
         "generalSettings": {
@@ -134,6 +135,99 @@
                 "date": "Date",
                 "size": "Size",
                 "actions": "Actions"
+            }
+        }
+    },
+    "nonConformitiesPanel": {
+        "title": "Non-Conformity Management",
+        "description": "Track and manage quality non-conformities",
+        "addButton": "Register Non-Conformity",
+        "stats": {
+            "open": "Open",
+            "inProgress": "In Progress",
+            "closed": "Closed",
+            "critical": "Critical"
+        },
+        "filters": {
+            "searchInput": "Search non-conformities...",
+            "status": {
+                "selectItem": [
+                    { "value": "all", "text": "All Status" }, 
+                    { "value": "open", "text": "Open" },
+                    { "value": "in-progress", "text": "In Progress" },
+                    { "value": "pending-review", "text": "Pending Review" },
+                    { "value": "closed", "text": "Closed" }
+                ]
+            },
+            "severity": {
+                "selectItem": [
+                    { "value": "all", "text": "All Severity" }, 
+                    { "value": "critical", "text": "Critical" },
+                    { "value": "high", "text": "High" },
+                    { "value": "medium", "text": "Medium" },
+                    { "value": "low", "text": "Low" }
+                ]
+            }
+        },
+        "nonConformitiesTable": {
+            "title": "Non-Conformities",
+            "columns": {
+                "ncId": "ID / Title",
+                "category":"Category",
+                "severity":"Severity",
+                "priority":"Priority",
+                "status":"Status",
+                "assignedTo":"Assigned To",
+                "deadline":"Deadline",
+                "actions":"Actions"
+            }
+        }
+    },
+    "userManagementPanel": {
+        "title": "User Management",
+        "description": "Manage user accounts, roles, and permissions",
+        "addButton": "Add User",
+        "stats": {
+            "activeUsers": "Active Users",
+            "administrators": "Administrators",
+            "managers": "Managers"
+        },
+        "searchInput": "Search users...",
+        "usersTable": {
+            "title": "Users",
+            "columns": {
+                "user":"User",
+                "email":"Email",
+                "role":"Role",
+                "department":"Department",
+                "status":"Status",
+                "actions":"Actions"
+            }
+        }
+    },
+    "auditLogsPanel": {
+        "title": "Audit Logs",
+        "description": "Track system activities and user actions",
+        "filters": {
+            "searchInput": "Search audit logs...",
+            "type": {
+                "selectItem": [
+                    { "value": "all", "text": "All Modules" }, 
+                    { "value": "documents", "text": "Documents" },
+                    { "value": "non-conformities", "text": "Non-Conformities" },
+                    { "value": "users", "text": "Users" },
+                    { "value": "system", "text": "System" }
+                ]
+            }
+        },
+        "auditLogsTable": {
+            "title": "Activity Log",
+            "columns": {
+                "user":"User",
+                "action":"Action",
+                "module":"Module",
+                "details":"Details",
+                "timestamp":"Timestamp"
             }
         }
     }

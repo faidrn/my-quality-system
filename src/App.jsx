@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LanguageProvider } from './context/LanguageContext';
 import Sidebar from './components/layout/Sidebar'
 import { Toaster } from './components/ui/sonner'
 import Header from './components/layout/Header'
@@ -39,6 +40,7 @@ function App() {
   };
 
   return (
+      <LanguageProvider>
     <div className="min-h-screen bg-gray-50 lg:w-screen">
       {/* Sidebar */}
       <Sidebar 
@@ -52,18 +54,20 @@ function App() {
       <div
         className='lg:pl-64'
       >
-        {/* Header */}
-        <Header onMobileMenuToggle={toggleMobileMenu} />
 
-        {/* Page Content */}
-        <main className='p-4 lg:p-6'>
-          {renderPage()}
-        </main>
+          {/* Header */}
+          <Header onMobileMenuToggle={toggleMobileMenu} />
 
-        {/* Toast Notifications */}
-        <Toaster position="top-right" />
+          {/* Page Content */}
+          <main className='p-4 lg:p-6'>
+            {renderPage()}
+          </main>
+
+          {/* Toast Notifications */}
+          <Toaster position="top-right" />
       </div>
     </div>
+        </LanguageProvider>
   )
 }
 
