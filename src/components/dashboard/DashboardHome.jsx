@@ -5,6 +5,7 @@ import { KPICard } from './KPICard';
 import { mockKPIs } from '../data/mockData';
 import { RecentNonConformities } from './RecentNonConformities';
 import { RecentActivity } from './RecentActivity';
+import useTranslations  from "../../hooks/useTranslations";
 
 
 const monthlyData = [
@@ -44,13 +45,21 @@ const severityData = [
 ];
 
 const DashboardHome = ({ onNavigate }) => {
+    const { t, loading } = useTranslations();
+    
+    // Previene error si el JSON aún no se ha cargado
+    if (loading) return <p>Loading...</p>;
+
+
     return (
         <div className="space-y-6">
             {/* Header */}
             <div>
-                <h1 className="text-2xl font-bold text-gray-900">Quality Management Dashboard</h1>
+                <h1 className="text-2xl font-bold text-gray-900">
+                    {t("dashboardPanel.title")}
+                </h1>
                 <p className="text-gray-500 mt-1">
-                    Overview of quality metrics and system activity
+                    {t("dashboardPanel.description")}
                 </p>
             </div>
 
@@ -66,7 +75,9 @@ const DashboardHome = ({ onNavigate }) => {
                 {/* Monthly Trends */}
                 <Card className="bg-white border-gray-300">
                     <CardHeader>
-                        <CardTitle>Monthly Trends</CardTitle>
+                        <CardTitle className="text-lg font-semibold">
+                            {t("dashboardPanel.monthlyTrends.label")}
+                        </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <ResponsiveContainer width="100%" height={300}>
@@ -98,7 +109,9 @@ const DashboardHome = ({ onNavigate }) => {
                 {/* Non-Conformities by Severity */}
                 <Card className="bg-white border-gray-300">
                     <CardHeader>
-                        <CardTitle>Non-Conformities by Severity</CardTitle>
+                        <CardTitle className="text-lg font-semibold">
+                            Non-Conformities by Severity
+                        </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <ResponsiveContainer width="100%" height={300}>

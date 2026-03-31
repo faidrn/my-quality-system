@@ -3,17 +3,25 @@ import { cn } from "../lib/utils";
 import { LayoutDashboard, FileText, AlertCircle, Users, Settings, Activity, Menu, X } from 'lucide-react';
 import { Button } from "../ui/button";
 import { ScrollArea } from "../ui/scroll-area";
+import useTranslations  from "../../hooks/useTranslations";
+
 
 const navigationItems = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { id: 'documents', label: 'Documents', icon: FileText },
-  { id: 'non-conformities', label: 'Non-Conformities', icon: AlertCircle },
-  { id: 'users', label: 'User Management', icon: Users },
-  { id: 'audit-logs', label: 'Audit Logs', icon: Activity },
-  { id: 'settings', label: 'Settings', icon: Settings },
+  { id: 'dashboard', label: 'sidebar.dashboard', icon: LayoutDashboard },
+  { id: 'documents', label: 'sidebar.documents', icon: FileText },
+  { id: 'non-conformities', label: 'sidebar.nonConformities', icon: AlertCircle },
+  { id: 'users', label: 'sidebar.userManagement', icon: Users },
+  { id: 'audit-logs', label: 'sidebar.auditLogs', icon: Activity },
+  { id: 'settings', label: 'sidebar.settings', icon: Settings },
 ];
 
 const Sidebar = ({ currentPage, onPageChange, isMobileOpen, onMobileToggle }) => {
+    const { t, loading } = useTranslations();
+    
+    // Previene error si el JSON aún no se ha cargado
+    if (loading) return <p>Loading...</p>;
+
+    
     return (
         <>
             {/* Mobile Overlay */}
@@ -85,7 +93,7 @@ const Sidebar = ({ currentPage, onPageChange, isMobileOpen, onMobileToggle }) =>
                                     )}
                                 >
                                     <Icon className="w-5 h-5" />
-                                    {item.label}
+                                    {t(item.label)}
                                 </button>
                             );
                         })}

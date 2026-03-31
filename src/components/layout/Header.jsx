@@ -103,11 +103,11 @@ const Header = ({ onMobileMenuToggle }) => {
                                 </div>
                             </DropdownMenuLabel>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem>Profile</DropdownMenuItem>
-                            <DropdownMenuItem>Settings</DropdownMenuItem>
+                            <DropdownMenuItem>{t("header.profile")}</DropdownMenuItem>
+                            <DropdownMenuItem>{t("header.settings")}</DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="text-red-600">
-                                Sign out
+                                {t("header.signout")}
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>

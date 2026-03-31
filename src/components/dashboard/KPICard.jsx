@@ -3,15 +3,21 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { ArrowUpIcon, ArrowDownIcon, MinusIcon } from 'lucide-react';
 import { cn } from '../lib/utils';
 import * as Icons from 'lucide-react';
+import useLanguage from '../../hooks/useLanguage';
+import useTranslations  from "../../hooks/useTranslations";
+
 
 export function KPICard({ kpi }) {
+  const { language, setLanguage } = useLanguage();
+  const { t } = useTranslations();
+  
   const Icon = Icons[kpi.icon];
 
   return (
     <Card className="bg-white border-gray-300">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-gray-600">
-          {kpi.title}
+          {kpi[language].title}
         </CardTitle>
         {Icon && (
           <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
@@ -43,7 +49,7 @@ export function KPICard({ kpi }) {
           >
             {kpi.change > 0 ? '+' : ''}{kpi.change}%
           </span>
-          <span className="text-xs text-gray-500 ml-1">vs last month</span>
+          <span className="text-xs text-gray-500 ml-1">{t("dashboardPanel.kpiVsLastMonth")}</span>
         </div>
       </CardContent>
     </Card>

@@ -4,6 +4,7 @@
         "documents": "Documentos",
         "nonConformities": "No Conformidades",
         "userManagement": "Gestión de Usuarios",
+        "auditLogs": "Auditoría",
         "settings": "Configuración"
     },
     "header": {
@@ -78,6 +79,7 @@
     "dashboardPanel": {
         "title": "Panel de Control de Calidad",
         "description": "Resumen de métricas de calidad y actividad del sistema",
+        "kpiVsLastMonth": "vs último mes",
         "monthlyTrends": {
             "label": "Tendencias Mensuales",
             "lineChartNonConformities": "No Conformidades",
