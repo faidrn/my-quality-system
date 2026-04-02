@@ -7,10 +7,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { Switch } from '../ui/switch';
 import { mockUsers } from '../data/mockData';
 import { Search, Plus, Edit, Trash2 } from 'lucide-react';
+import useTranslations  from "../../hooks/useTranslations";
 
 
 const UserManagementPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
+    const { t, loading } = useTranslations();
 
   const filteredUsers = mockUsers.filter(
     (user) =>
@@ -28,17 +30,24 @@ const UserManagementPage = () => {
     }
   };
 
+  // Previene error si el JSON aún no se ha cargado
+  if (loading) return <p>Loading...</p>;
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
-          <p className="text-gray-500 mt-1">Manage user accounts, roles, and permissions</p>
+          <h1 className="text-2xl font-bold text-gray-900">
+            {t("userManagementPanel.title")}
+          </h1>
+          <p className="text-gray-500 mt-1">
+            {t("userManagementPanel.description")}
+          </p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700">
           <Plus className="w-4 h-4 mr-2" />
-          Add User
+          {t("userManagementPanel.addButton")}
         </Button>
       </div>
 
@@ -52,7 +61,9 @@ const UserManagementPage = () => {
               <p className="text-2xl font-bold text-gray-900">
                 {mockUsers.filter((u) => u.active).length}
               </p>
-              <p className="text-sm text-gray-600 mt-1">Active Users</p>
+              <p className="text-sm text-gray-600 mt-1">
+                {t("userManagementPanel.stats.activeUsers")}
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -64,7 +75,9 @@ const UserManagementPage = () => {
               <p className="text-2xl font-bold text-gray-900">
                 {mockUsers.filter((u) => u.role === 'admin').length}
               </p>
-              <p className="text-sm text-gray-600 mt-1">Administrators</p>
+              <p className="text-sm text-gray-600 mt-1">
+                {t("userManagementPanel.stats.administrators")}
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -76,7 +89,9 @@ const UserManagementPage = () => {
               <p className="text-2xl font-bold text-gray-900">
                 {mockUsers.filter((u) => u.role === 'manager').length}
               </p>
-              <p className="text-sm text-gray-600 mt-1">Managers</p>
+              <p className="text-sm text-gray-600 mt-1">
+                {t("userManagementPanel.stats.managers")}
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -90,7 +105,7 @@ const UserManagementPage = () => {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <Input
-              placeholder="Search users..."
+              placeholder={t("userManagementPanel.searchInput")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 border-gray-100 bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-300"
@@ -107,7 +122,7 @@ const UserManagementPage = () => {
           <CardTitle
             className="text-lg font-semibold text-gray-900"
           >
-            Users ({filteredUsers.length})
+            {t("userManagementPanel.usersTable.title")} ({filteredUsers.length})
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -117,12 +132,12 @@ const UserManagementPage = () => {
                 <TableRow
                     className="border-b-gray-300 hover:bg-gray-50"
                 >
-                  <TableHead>User</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Role</TableHead>
-                  <TableHead>Department</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+                  <TableHead>{t("userManagementPanel.usersTable.columns.user")}</TableHead>
+                  <TableHead>{t("userManagementPanel.usersTable.columns.email")}</TableHead>
+                  <TableHead>{t("userManagementPanel.usersTable.columns.role")}</TableHead>
+                  <TableHead>{t("userManagementPanel.usersTable.columns.department")}</TableHead>
+                  <TableHead>{t("userManagementPanel.usersTable.columns.status")}</TableHead>
+                  <TableHead className="text-right">{t("userManagementPanel.usersTable.columns.actions")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

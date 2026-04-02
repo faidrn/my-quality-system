@@ -88,9 +88,10 @@
         "nonConformitiesBySeverity": {
             "label": "Non-Conformities by Severity",
             "severityLevels": {
-                "minor": "Minor",
-                "major": "Major",
-                "critical": "Critical"
+                "critical": "Critical",
+                "high": "High",
+                "medium": "Medium",
+                "low": "Low"
             }
         },
         "recentNonConformities": {

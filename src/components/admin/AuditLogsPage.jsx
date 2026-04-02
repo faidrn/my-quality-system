@@ -7,10 +7,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { mockAuditLogs } from '../data/mockData';
 import { Search, Activity } from 'lucide-react';
 import { format } from 'date-fns';
+import useTranslations  from "../../hooks/useTranslations";
+
 
 const AuditLogsPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [moduleFilter, setModuleFilter] = useState('all');
+    const { t, loading } = useTranslations();
 
     const filteredLogs = mockAuditLogs.filter((log) => {
         const matchesSearch =
@@ -38,13 +41,16 @@ const AuditLogsPage = () => {
         }
     };
 
+    // Previene error si el JSON aún no se ha cargado
+    if (loading) return <p>Loading...</p>;
+
     return (
         <div className="space-y-6">
             {/* Header */}
             <div>
-                <h1 className="text-2xl font-bold text-gray-900">Audit Logs</h1>
+                <h1 className="text-2xl font-bold text-gray-900">{t("auditLogsPanel.title")}</h1>
                 <p className="text-gray-500 mt-1">
-                Track system activities and user actions
+                    {t("auditLogsPanel.description")}
                 </p>
             </div>
 
@@ -57,7 +63,7 @@ const AuditLogsPage = () => {
                         <div className="relative flex-1">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                             <Input
-                                placeholder="Search audit logs..."
+                                placeholder={t("auditLogsPanel.filters.searchInput")}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 className="pl-10 border-gray-100 bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-300"
@@ -74,11 +80,11 @@ const AuditLogsPage = () => {
                         <SelectContent
                             className="bg-white"
                         >
-                            <SelectItem value="all">All Modules</SelectItem>
-                            <SelectItem value="documents">Documents</SelectItem>
-                            <SelectItem value="non-conformities">Non-Conformities</SelectItem>
-                            <SelectItem value="users">Users</SelectItem>
-                            <SelectItem value="system">System</SelectItem>
+                            {t("auditLogsPanel.filters.type.selectItem").map((item) => (
+                                <SelectItem key={item.value} value={item.value}>
+                                    {item.text}
+                                </SelectItem>
+                            ))}
                         </SelectContent>
                         </Select>
                     </div>
@@ -93,7 +99,7 @@ const AuditLogsPage = () => {
                     <CardTitle
                         className="text-lg font-semibold text-gray-900"
                     >
-                        Activity Log ({filteredLogs.length})
+                        {t("auditLogsPanel.auditLogsTable.title")} ({filteredLogs.length})
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -103,11 +109,11 @@ const AuditLogsPage = () => {
                                 <TableRow
                                     className="border-b-gray-300 hover:bg-gray-50"
                                 >
-                                    <TableHead>User</TableHead>
-                                    <TableHead>Action</TableHead>
-                                    <TableHead>Module</TableHead>
-                                    <TableHead>Details</TableHead>
-                                    <TableHead>Timestamp</TableHead>
+                                    <TableHead>{t("auditLogsPanel.auditLogsTable.columns.user")}</TableHead>
+                                    <TableHead>{t("auditLogsPanel.auditLogsTable.columns.action")}</TableHead>
+                                    <TableHead>{t("auditLogsPanel.auditLogsTable.columns.module")}</TableHead>
+                                    <TableHead>{t("auditLogsPanel.auditLogsTable.columns.details")}</TableHead>
+                                    <TableHead>{t("auditLogsPanel.auditLogsTable.columns.timestamp")}</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>

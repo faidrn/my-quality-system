@@ -10,12 +10,17 @@ import { mockNonConformities } from '../data/mockData';
 import { Search, Plus, Eye, AlertCircle } from 'lucide-react';
 import { format } from 'date-fns';
 import { NonConformityDetails } from './NonConformityDetails';
+import useTranslations  from "../../hooks/useTranslations";
+
 
 export function NonConformitiesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [severityFilter, setSeverityFilter] = useState('all');
   const [selectedNC, setSelectedNC] = useState(null);
+  const { t, loading } = useTranslations();
+    
+    
 
   const filteredNCs = useMemo(() => {
     return mockNonConformities.filter((nc) => {
@@ -61,17 +66,24 @@ export function NonConformitiesPage() {
     }
   };
 
+  // Previene error si el JSON aún no se ha cargado
+  if (loading) return <p>Loading...</p>;
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Non-Conformities Management</h1>
-          <p className="text-gray-500 mt-1">Track and manage quality non-conformities</p>
+          <h1 className="text-2xl font-bold text-gray-900">
+            {t("nonConformitiesPanel.title")}
+          </h1>
+          <p className="text-gray-500 mt-1">
+            {t("nonConformitiesPanel.description")}
+          </p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700">
           <Plus className="w-4 h-4 mr-2" />
-          Register Non-Conformity
+          {t("nonConformitiesPanel.addButton")}
         </Button>
       </div>
 
@@ -83,7 +95,9 @@ export function NonConformitiesPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Open</p>
+                <p className="text-sm text-gray-600">
+                  {t("nonConformitiesPanel.stats.open")}
+                </p>
                 <p className="text-2xl font-bold text-blue-600">
                   {mockNonConformities.filter((nc) => nc.status === 'open').length}
                 </p>
@@ -100,7 +114,9 @@ export function NonConformitiesPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">In Progress</p>
+                <p className="text-sm text-gray-600">
+                  {t("nonConformitiesPanel.stats.inProgress")}
+                </p>
                 <p className="text-2xl font-bold text-amber-600">
                   {mockNonConformities.filter((nc) => nc.status === 'in-progress').length}
                 </p>
@@ -117,7 +133,9 @@ export function NonConformitiesPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Closed</p>
+                <p className="text-sm text-gray-600">
+                  {t("nonConformitiesPanel.stats.closed")}
+                </p>
                 <p className="text-2xl font-bold text-green-600">
                   {mockNonConformities.filter((nc) => nc.status === 'closed').length}
                 </p>
@@ -134,7 +152,9 @@ export function NonConformitiesPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Critical</p>
+                <p className="text-sm text-gray-600">
+                  {t("nonConformitiesPanel.stats.critical")}
+                </p>
                 <p className="text-2xl font-bold text-red-600">
                   {mockNonConformities.filter((nc) => nc.severity === 'critical').length}
                 </p>
@@ -156,7 +176,7 @@ export function NonConformitiesPage() {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <Input
-                placeholder="Search non-conformities..."
+                placeholder={t("nonConformitiesPanel.filters.searchInput")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 border-gray-100 bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:border-gray-300"
@@ -173,11 +193,11 @@ export function NonConformitiesPage() {
               <SelectContent
                 className="bg-white"
               >
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="open">Open</SelectItem>
-                <SelectItem value="in-progress">In Progress</SelectItem>
-                <SelectItem value="pending-review">Pending Review</SelectItem>
-                <SelectItem value="closed">Closed</SelectItem>
+                {t("nonConformitiesPanel.filters.status.selectItem").map((item) => (
+                    <SelectItem key={item.value} value={item.value}>
+                        {item.text}
+                    </SelectItem>
+                ))}
               </SelectContent>
             </Select>
             <Select 
@@ -191,11 +211,11 @@ export function NonConformitiesPage() {
               <SelectContent
                 className="bg-white"
               >
-                <SelectItem value="all">All Severity</SelectItem>
-                <SelectItem value="critical">Critical</SelectItem>
-                <SelectItem value="high">High</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="low">Low</SelectItem>
+                {t("nonConformitiesPanel.filters.severity.selectItem").map((item) => (
+                    <SelectItem key={item.value} value={item.value}>
+                        {item.text}
+                    </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
@@ -210,7 +230,7 @@ export function NonConformitiesPage() {
           <CardTitle
             className="text-lg font-semibold text-gray-900"
         >
-            Non-Conformities ({filteredNCs.length})
+            {t("nonConformitiesPanel.nonConformitiesTable.title")} ({filteredNCs.length})
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -220,14 +240,14 @@ export function NonConformitiesPage() {
                 <TableRow
                   className="border-b-gray-300 hover:bg-gray-50"
                 >
-                  <TableHead>ID / Title</TableHead>
-                  <TableHead>Category</TableHead>
-                  <TableHead>Severity</TableHead>
-                  <TableHead>Priority</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Assigned To</TableHead>
-                  <TableHead>Deadline</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+                  <TableHead>{t("nonConformitiesPanel.nonConformitiesTable.columns.ncId")}</TableHead>
+                  <TableHead>{t("nonConformitiesPanel.nonConformitiesTable.columns.category")}</TableHead>
+                  <TableHead>{t("nonConformitiesPanel.nonConformitiesTable.columns.severity")}</TableHead>
+                  <TableHead>{t("nonConformitiesPanel.nonConformitiesTable.columns.priority")}</TableHead>
+                  <TableHead>{t("nonConformitiesPanel.nonConformitiesTable.columns.status")}</TableHead>
+                  <TableHead>{t("nonConformitiesPanel.nonConformitiesTable.columns.assignedTo")}</TableHead>
+                  <TableHead>{t("nonConformitiesPanel.nonConformitiesTable.columns.deadline")}</TableHead>
+                  <TableHead className="text-right">{t("nonConformitiesPanel.nonConformitiesTable.columns.actions")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

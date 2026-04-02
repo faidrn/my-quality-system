@@ -8,11 +8,15 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { mockDocuments } from '../data/mockData';
 import { Search, Download, Eye, FileText, Plus } from 'lucide-react';
 import { format } from 'date-fns';
+import useTranslations  from "../../hooks/useTranslations";
+
 
 const DocumentsPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('all');
     const [statusFilter, setStatusFilter] = useState('all');
+    const { t, loading } = useTranslations();
+    
 
     const filteredDocuments = useMemo(() => {
         return mockDocuments.filter((doc) => {
@@ -47,19 +51,24 @@ const DocumentsPage = () => {
         }
     };
 
+    // Previene error si el JSON aún no se ha cargado
+    if (loading) return <p>Loading...</p>;
+
     return (
         <div className="space-y-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-                <h1 className="text-2xl font-bold text-gray-900">Document Management</h1>
+                <h1 className="text-2xl font-bold text-gray-900">
+                    {t("documentsPanel.title")}
+                </h1>
                 <p className="text-gray-500 mt-1">
-                    Manage quality documents, procedures, and manuals
+                    {t("documentsPanel.description")}
                 </p>
             </div>
             <Button className="bg-blue-600 hover:bg-blue-700 md:bg-blue-600">
                 <Plus className="w-4 h-4 mr-2" />
-                Upload Document
+                {t("documentsPanel.uploadButton")}
             </Button>
         </div>
 
@@ -70,7 +79,7 @@ const DocumentsPage = () => {
                     <div className="relative flex-1">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                         <Input
-                            placeholder="Search documents..."
+                            placeholder={t("documentsPanel.filters.searchInput")}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="pl-10 bg-gray-100 border-0"
@@ -86,12 +95,11 @@ const DocumentsPage = () => {
                         <SelectContent
                             className="bg-white border-gray-100"
                         >
-                            <SelectItem value="all">All Categories</SelectItem>
-                            <SelectItem value="process">Process</SelectItem>
-                            <SelectItem value="procedure">Procedure</SelectItem>
-                            <SelectItem value="manual">Manual</SelectItem>
-                            <SelectItem value="format">Format</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            {t("documentsPanel.filters.categories.selectItem").map((item) => (
+                                <SelectItem key={item.value} value={item.value}>
+                                    {item.text}
+                                </SelectItem>
+                            ))}
                         </SelectContent>
                     </Select>
                     <Select value={statusFilter} onValueChange={setStatusFilter}>
@@ -101,10 +109,11 @@ const DocumentsPage = () => {
                         <SelectContent
                             className="bg-white border-gray-100"
                         >
-                            <SelectItem value="all">All Status</SelectItem>
-                            <SelectItem value="approved">Approved</SelectItem>
-                            <SelectItem value="draft">Draft</SelectItem>
-                            <SelectItem value="archived">Archived</SelectItem>
+                            {t("documentsPanel.filters.status.selectItem").map((item) => (
+                                <SelectItem key={item.value} value={item.value}>
+                                    {item.text}
+                                </SelectItem>
+                            ))}
                         </SelectContent>
                     </Select>
                 </div>
@@ -119,7 +128,7 @@ const DocumentsPage = () => {
                 <CardTitle
                     className="text-lg font-semibold text-gray-900"
                 >
-                    Documents ({filteredDocuments.length})
+                    {t("documentsPanel.documentTable.title")} ({filteredDocuments.length})
                 </CardTitle>
             </CardHeader>
             <CardContent>
@@ -129,14 +138,14 @@ const DocumentsPage = () => {
                             <TableRow
                                 className="border-b border-gray-300"
                             >
-                                <TableHead>Document</TableHead>
-                                <TableHead>Category</TableHead>
-                                <TableHead>Version</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead>Uploaded By</TableHead>
-                                <TableHead>Date</TableHead>
-                                <TableHead>Size</TableHead>
-                                <TableHead className="text-right">Actions</TableHead>
+                                <TableHead>{t("documentsPanel.documentTable.columns.document")}</TableHead>
+                                <TableHead>{t("documentsPanel.documentTable.columns.category")}</TableHead>
+                                <TableHead>{t("documentsPanel.documentTable.columns.version")}</TableHead>
+                                <TableHead>{t("documentsPanel.documentTable.columns.status")}</TableHead>
+                                <TableHead>{t("documentsPanel.documentTable.columns.uploadedBy")}</TableHead>
+                                <TableHead>{t("documentsPanel.documentTable.columns.date")}</TableHead>
+                                <TableHead>{t("documentsPanel.documentTable.columns.size")}</TableHead>
+                                <TableHead className="text-right">{t("documentsPanel.documentTable.columns.actions")}</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody

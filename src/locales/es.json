@@ -88,9 +88,10 @@
         "nonConformitiesBySeverity": {
             "label": "No Conformidades por Severidad",
             "severityLevels": {
-                "minor": "Menor",
-                "major": "Mayor",
-                "critical": "Crítica"
+                "critical": "Crítica",
+                "high": "Alta",
+                "medium": "Media",
+                "low": "Baja"
             }
         },
         "recentNonConformities": {
@@ -109,7 +110,7 @@
             "searchInput": "Buscar documentos...",
             "categories": {
                 "selectItem": [
-                    { "value": "all", "text": "Todas las Categorías" },
+                    { "value": "all", "text": "Categorías" },
                     { "value": "process", "text": "Proceso" },
                     { "value": "procedure", "text": "Procedimiento" },
                     { "value": "manual", "text": "Manual" },
@@ -163,7 +164,7 @@
             },
             "severity": {
                 "selectItem": [
-                    { "value": "all", "text": "Todas las Severidades" },
+                    { "value": "all", "text": "Severidad" },
                     { "value": "critical", "text": "Crítica" },
                     { "value": "high", "text": "Alta" },
                     { "value": "medium", "text": "Media" },

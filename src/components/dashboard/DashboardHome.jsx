@@ -19,26 +19,22 @@ const monthlyData = [
 
 const severityData = [
   { 
-    en: { name: 'Critical' }, 
-    es: { name: 'Crítico'},
+    key: 'critical',
     value: 1, 
     color: '#ef4444' 
   },
   { 
-    en: { name: 'High' }, 
-    es: { name: 'Alto' }, 
+    key: 'high',
     value: 1, 
     color: '#f97316' 
   },
   { 
-    en: { name: 'Medium' }, 
-    es: { name: 'Medio' }, 
+    key: 'medium', 
     value: 0, 
     color: '#f59e0b' 
   },
   { 
-    en: { name: 'Low' }, 
-    es: { name: 'Bajo' }, 
+    key: 'low', 
     value: 1, 
     color: '#3b82f6'
  },
@@ -92,14 +88,14 @@ const DashboardHome = ({ onNavigate }) => {
                                     dataKey="nonConformities"
                                     stroke="#ef4444"
                                     strokeWidth={2}
-                                    name="Non-Conformities"
+                                    name={t("dashboardPanel.monthlyTrends.lineChartNonConformities")}
                                 />
                                 <Line
                                     type="monotone"
                                     dataKey="documents"
                                     stroke="#3b82f6"
                                     strokeWidth={2}
-                                    name="Documents"
+                                    name={t("dashboardPanel.monthlyTrends.lineChartDocuments")}
                                 />
                             </LineChart>
                         </ResponsiveContainer>
@@ -110,7 +106,7 @@ const DashboardHome = ({ onNavigate }) => {
                 <Card className="bg-white border-gray-300">
                     <CardHeader>
                         <CardTitle className="text-lg font-semibold">
-                            Non-Conformities by Severity
+                            {t("dashboardPanel.nonConformitiesBySeverity.label")}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -121,7 +117,9 @@ const DashboardHome = ({ onNavigate }) => {
                                     cx="50%"
                                     cy="50%"
                                     labelLine={false}
-                                    label={({ name, value }) => `${name}: ${value}`}
+                                    label={({ key, value }) => {
+                                        return `${t(`dashboardPanel.nonConformitiesBySeverity.severityLevels.${key}`)}: ${value}`;
+                                    }}
                                     outerRadius={100}
                                     fill="#8884d8"
                                     dataKey="value"
@@ -130,7 +128,12 @@ const DashboardHome = ({ onNavigate }) => {
                                         <Cell key={`cell-${index}`} fill={entry.color} />
                                     ))}
                                 </Pie>
-                                <Tooltip />
+                                <Tooltip 
+                                    formatter={(value, name, props) => {
+                                        const translatedName = t(`dashboardPanel.nonConformitiesBySeverity.severityLevels.${props.payload.key}`);
+                                        return [value, translatedName];
+                                    }}
+                                />
                             </PieChart>
                         </ResponsiveContainer>
                     </CardContent>

@@ -5,9 +5,13 @@ import { Button } from '../ui/button';
 import { mockNonConformities } from '../data/mockData';
 import { AlertCircle, ArrowRight } from 'lucide-react';
 import { format } from 'date-fns';
+import useTranslations  from "../../hooks/useTranslations";
+
 
 export function RecentNonConformities({ onViewAll }) {
   const recentNCs = mockNonConformities.slice(0, 5);
+  const { t, loading } = useTranslations();
+
 
   const getSeverityColor = (severity) => {
     switch (severity) {
@@ -29,12 +33,15 @@ export function RecentNonConformities({ onViewAll }) {
     }
   };
 
+  // Previene error si el JSON aún no se ha cargado
+  if (loading) return <p>Loading...</p>;
+
   return (
     <Card className="bg-white border-gray-300">
       <CardHeader className="flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-lg font-semibold">Recent Non-Conformities</CardTitle>
+        <CardTitle className="text-lg font-semibold">{t("dashboardPanel.recentNonConformities.label")}</CardTitle>
         <Button variant="ghost" size="sm" onClick={onViewAll}>
-          View All
+          {t("dashboardPanel.recentNonConformities.viewAll")}
           <ArrowRight className="w-4 h-4 ml-2" />
         </Button>
       </CardHeader>
@@ -62,8 +69,8 @@ export function RecentNonConformities({ onViewAll }) {
                   <Badge className={getStatusColor(nc.status)}>
                     {nc.status.replace('-', ' ')}
                   </Badge>
-                  <span className="text-xs text-gray-500">Assigned to: {nc.assignedTo}</span>
-                  <span className="text-xs text-gray-500">Due: {format(nc.deadline, 'MMM dd, yyyy')}</span>
+                  <span className="text-xs text-gray-500">{t("dashboardPanel.recentNonConformities.assignedTo")}: {nc.assignedTo}</span>
+                  <span className="text-xs text-gray-500">{t("dashboardPanel.recentNonConformities.dueDate")}: {format(nc.deadline, 'MMM dd, yyyy')}</span>
                 </div>
               </div>
             </div>
