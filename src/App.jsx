@@ -41,33 +41,33 @@ function App() {
 
   return (
       <LanguageProvider>
-    <div className="min-h-screen bg-gray-50 lg:w-screen">
-      {/* Sidebar */}
-      <Sidebar 
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-        isMobileOpen={isMobileMenuOpen}
-        onMobileToggle={toggleMobileMenu}
-      />
+        <div className="min-h-screen bg-gray-50 lg:w-screen">
+          {/* Sidebar */}
+          <Sidebar 
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+            isMobileOpen={isMobileMenuOpen}
+            onMobileToggle={toggleMobileMenu}
+          />
 
-      {/* Main Content */}
-      <div
-        className='lg:pl-64'
-      >
+          {/* Main Content */}
+          <div
+            className='lg:pl-64'
+          >
 
-          {/* Header */}
-          <Header onMobileMenuToggle={toggleMobileMenu} />
+              {/* Header */}
+              <Header onMobileMenuToggle={toggleMobileMenu} />
 
-          {/* Page Content */}
-          <main className='p-4 lg:p-6'>
-            {renderPage()}
-          </main>
+              {/* Page Content */}
+              <main className='p-4 lg:p-6'>
+                {renderPage()}
+              </main>
 
-          {/* Toast Notifications */}
-          <Toaster position="top-right" />
-      </div>
-    </div>
-        </LanguageProvider>
+              {/* Toast Notifications */}
+              <Toaster position="top-right" />
+          </div>
+        </div>
+      </LanguageProvider>
   )
 }
 
